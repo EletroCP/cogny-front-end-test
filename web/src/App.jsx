@@ -1,7 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
+import { collection, getDocs } from 'firebase/firestore';
+import { useEffect } from 'react';
+import { db } from './firebaseDb/firebaseDb';
 
 function App() {
+
+  const productsCollectionRef = collection(db, "products");
+
+  useEffect(() => {
+    const getProducts = async () => {
+      const data = await getDocs(productsCollectionRef);
+      console.log(data);
+    };
+
+    getProducts();
+  }, [productsCollectionRef]);
+
   return (
     <div className="App">
       <header className="App-header">
