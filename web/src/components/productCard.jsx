@@ -1,31 +1,47 @@
 import React from "react";
-// import { useContext } from 'react';
-// import { GlobalStateContext } from "../context/context";
+import { useContext } from 'react';
+import { GlobalStateContext } from "../context/context";
 import mockDataBase from "../mock/mock";
 
 function ProductCard() {
-    // const { productsDb } = useContext(GlobalStateContext);
+    const { cart, setCart } = useContext(GlobalStateContext);
+    const temporaryImageSize = { width: "300px", height: "300px"};
     const productsDb = mockDataBase;
+
+    const addProduct = (image, description, price) => {
+        const productObjet = {
+            image,
+            description,
+            price
+        }
+        const updateCart = [...cart, productObjet];
+        setCart(updateCart);
+    };
+
     return(
         <div>
-            {productsDb.map((product, index) => {
+            {productsDb.map(({image, description, price}, index) => {
                 return(
-                    <div>
-                        <div key={`product-id${index}`}>
-                            <img src={product.image} alt={product.description}/>
+                    <div key={`product-id${index}`}>
+                        <div >
+                            <img
+                                src={image}
+                                alt={description}
+                                style={temporaryImageSize}
+                            />
                         </div>
                         <div>
                             <p>
-                                {product.description}
+                                {description}
                             </p>
                         </div>
                         <div>
                             <p>
-                                {product.price}
+                                {price}
                             </p>
                         </div>
                         <div>
-                            <input type='button' value="Comprar" onClick={() => console.log(productsDb)}/>
+                            <input type='button' value="Comprar" onClick={() => addProduct(image, description, price)}/>
                         </div>
                     </div>
                 )
