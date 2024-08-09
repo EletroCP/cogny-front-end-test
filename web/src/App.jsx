@@ -1,10 +1,11 @@
 import React from 'react';
+import ProductCard from './components/productCard';
 
 function App() {
   return (
       <div>
         <header>
-          <p>Hellow World</p>
+          <ProductCard/>
         </header>
       </div>
   );
