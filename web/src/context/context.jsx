@@ -8,9 +8,10 @@ const GlobalStateProvider = ({ children }) => {
   const [productsDb, setProductsDb] = useState([]);
 
   const productsCollectionRef = collection(db, "products");
-
+  
   useEffect(() => {
     const getProducts = async () => {
+      console.log('Fetching products...');
       const data = await getDocs(productsCollectionRef);
       setProductsDb(data.docs.map(doc => doc.data()));
     };
