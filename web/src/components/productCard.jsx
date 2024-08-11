@@ -34,7 +34,7 @@ function ProductCard({image, description, price, index}) {
                         </div>
                         <div>
                             <p>
-                                {price}
+                                {price.toFixed(2)}
                             </p>
                         </div>
                         <div>
