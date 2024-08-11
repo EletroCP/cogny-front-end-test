@@ -1,17 +1,16 @@
 import React from "react";
 import { useContext } from "react";
 import { GlobalStateContext } from "../context/context";
-import { useNavigate } from "react-router-dom";
 import ProductCard from "../components/productCard";
+import Logo from "../components/Logo";
 
 const Home = () => {
-    const { cart, productsDb } = useContext(GlobalStateContext);
-    const navigate = useNavigate();
+    const { productsDb } = useContext(GlobalStateContext);
     // const productsDb = mockDataBase;
 
     return(
         <div>
-            <p onClick={() => navigate("/cart")}>Carrinho: {cart.length}</p>
+            <Logo url={"/cart"}/>
             {productsDb.map(({image, description, price}, index) => (
                     <ProductCard 
                         key={`product-id${index}`}

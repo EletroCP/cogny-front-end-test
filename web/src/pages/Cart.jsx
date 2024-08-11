@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { GlobalStateContext } from "../context/context";
 import { useNavigate } from "react-router-dom";
 import ProductCard from "../components/productCard";
+import Logo from "../components/Logo";
 
 function Cart() {
     const { cart } = useContext(GlobalStateContext);
@@ -10,7 +11,7 @@ function Cart() {
     
     return(
         <div>
-            <p onClick={() => navigate("/")}>Home</p>
+            <Logo url="/"/>
             {cart.map(({image, description, price}, index) => (
                     <ProductCard 
                         key={`product-id${index}`}
