@@ -1,18 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import Home from './pages/Home';
+import Cart from './pages/cart';
 import reportWebVitals from './reportWebVitals';
 import { GlobalStateProvider } from './context/context';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Cart from './components/cart';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>,
+    element: <Home/>,
   },
 
   {
