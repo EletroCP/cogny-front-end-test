@@ -4,12 +4,10 @@ import { GlobalStateContext } from "../context/context";
 import { useNavigate } from "react-router-dom";
 // import mockDataBase from "../mock/mock";
 
-function ProductCard() {
-    const { cart, setCart, productsDb } = useContext(GlobalStateContext);
+function ProductCard({image, description, price, index}) {
+    const { cart, setCart } = useContext(GlobalStateContext);
     const temporaryImageSize = { width: "300px", height: "300px"};
-    const navigate = useNavigate();
-    // const productsDb = mockDataBase;
-
+    
     const addProduct = (image, description, price) => {
         const productObjet = {
             image,
@@ -19,12 +17,8 @@ function ProductCard() {
         const updateCart = [...cart, productObjet];
         setCart(updateCart);
     };
-
     return(
         <div style={{backgroundColor: "withe"}}>
-            <p onClick={() => navigate("/cart")}>Carrinho: {cart.length}</p>
-            {productsDb.map(({image, description, price}, index) => {
-                return(
                     <div key={`product-id${index}`}>
                         <div >
                             <img
@@ -47,8 +41,6 @@ function ProductCard() {
                             <input type='button' value="Comprar" onClick={() => addProduct(image, description, price)}/>
                         </div>
                     </div>
-                )
-            })}
         </div>
     )
 }
