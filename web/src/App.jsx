@@ -1,12 +1,14 @@
 import React from 'react';
-import ProductCard from './components/productCard';
+import Home from './pages/Home';
 
 function App() {
   return (
       <div>
         <header>
-          <ProductCard/>
         </header>
+        <body>
+          <Home/>
+        </body>
       </div>
   );
 }
