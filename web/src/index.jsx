@@ -4,12 +4,27 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { GlobalStateProvider } from './context/context';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Cart from './components/cart';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App/>,
+  },
+
+  {
+    path: "/cart",
+    element: <Cart/>
+  }
+]);
+
 root.render(
   <React.StrictMode>
     <GlobalStateProvider>
-      <App />
+      <RouterProvider router={router} />
     </GlobalStateProvider>
   </React.StrictMode>
 );
