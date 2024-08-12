@@ -5,7 +5,7 @@ import Logo from "../components/Logo";
 import MyCart from "../components/MyCart";
 
 function Cart() {
-    const { cart } = useContext(GlobalStateContext);
+    const { cart, setCart } = useContext(GlobalStateContext);
 
     const groupedCart = cart.reduce((acc, item) => {
         const key = `${item.image}-${item.description}-${item.price}`;
@@ -59,7 +59,7 @@ function Cart() {
                     </div>
                 </div>
             ))}
-            <input type="button" value="Finalizar pedido" />
+            <input type="button" value="Finalizar pedido" onClick={() => {setCart([])}}/>
             <div>
                 <p>Total:</p>
                 <h1>R$: {formattedCartValue}</h1>
