@@ -1,5 +1,5 @@
 import React from 'react';
-import shoes from '../icons/shoes.jpg'
+import shoes from '../icons/shoes.png'
 import { useNavigate } from 'react-router-dom';
 const Logo = ({url}) => {
     const navigate = useNavigate()
