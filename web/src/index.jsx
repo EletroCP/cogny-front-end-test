@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Home from './pages/Home';
 import Cart from './pages/Cart';
-import reportWebVitals from './reportWebVitals';
 import { GlobalStateProvider } from './context/context';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import './style/Index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
