@@ -1,9 +1,10 @@
-import React from "react";
-import { useContext } from "react";
-import { GlobalStateContext } from "../context/context";
-import ProductCard from "../components/productCard";
-import Logo from "../components/Logo";
-import MyCart from "../components/MyCart";
+import React from 'react';
+import { useContext } from 'react';
+import { GlobalStateContext } from '../context/context';
+import ProductCard from '../components/productCard';
+import Logo from '../components/Logo';
+import MyCart from '../components/MyCart';
+import '../style/Home.css';
 
 const Home = () => {
     const { productsDb, cart, setCart } = useContext(GlobalStateContext);
@@ -17,11 +18,12 @@ const Home = () => {
         const updateCart = [...cart, productObjet];
         setCart(updateCart);
     };
+
     return(
         <div>
             <div>
-                <Logo url={"/"}/>
-                <MyCart url={"/cart"}/>
+                <Logo url={'/'}/>
+                <MyCart url={'/cart'}/>
             </div>
             {productsDb.map(({image, description, price}, index) => (
                 <div key={`product-id${index}`}>
@@ -32,7 +34,7 @@ const Home = () => {
                         price={price}
                     />
                     <div>
-                        <input type='button' value="Comprar" onClick={() => addProduct(image, description, price)}/>
+                        <input type='button' value='Comprar' onClick={() => addProduct(image, description, price)}/>
                     </div>
                 </div>
             ))}

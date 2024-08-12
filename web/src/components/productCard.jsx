@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
 function ProductCard({image, description, price, index}) {
-    const temporaryImageSize = { width: "300px", height: "300px"};
+    const temporaryImageSize = { width: '300px', height: '300px'};
     
     return(
-        <div style={{backgroundColor: "withe"}}>
+        <div style={{backgroundColor: 'withe'}}>
                     <div key={`product-id${index}`}>
                         <div >
                             <img
