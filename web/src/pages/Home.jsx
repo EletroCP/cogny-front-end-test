@@ -21,7 +21,7 @@ const Home = () => {
 
     return(
         <div>
-            <div>
+            <div id='home-header'>
                 <Logo url={'/'}/>
                 <MyCart url={'/cart'}/>
             </div>
