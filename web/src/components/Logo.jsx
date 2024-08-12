@@ -7,7 +7,7 @@ const Logo = ({url}) => {
     const navigate = useNavigate()
     return(
         <div onClick={() => navigate(url)} id='header-logo-container'>
-            <h2 id='header-logo-title'>COGNYSHOES</h2>
+            <p id='header-logo-title'>COGNYSHOES</p>
             <img id='header-logo-image' alt='logo' src={shoes}/>
         </div>
     )
