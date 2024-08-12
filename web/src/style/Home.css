@@ -1,0 +1,6 @@
+#home-header {
+    display: flex;
+    justify-content: space-around;
+    gap: 63%;
+    padding: 15px 0;
+}
