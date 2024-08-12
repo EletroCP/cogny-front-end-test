@@ -4,3 +4,11 @@
     gap: 63%;
     padding: 15px 0;
 }
+
+#home-cards-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    width: 100vw; 
+    flex-wrap: wrap;
+}
