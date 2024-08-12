@@ -6,9 +6,9 @@ import '../style/Logo.css';
 const Logo = ({url}) => {
     const navigate = useNavigate()
     return(
-        <div onClick={() => navigate(url)} id='header-container'>
-            <h2 id='header-title'>COGNYSHOES</h2>
-            <img id='header-logo' alt='logo' src={shoes}/>
+        <div onClick={() => navigate(url)} id='header-logo-container'>
+            <h2 id='header-logo-title'>COGNYSHOES</h2>
+            <img id='header-logo-image' alt='logo' src={shoes}/>
         </div>
     )
 }

@@ -1,4 +1,4 @@
-#header-container {
+#header-logo-container {
     width: 100%;
     height: 2%;
     display: flex;
@@ -8,14 +8,14 @@
     gap: 15px;
 }
 
-#header-title {
+#header-logo-title {
     color: #ffffff;
     width: auto;
     height: auto;
     font-family: "Montserrat", sans-serif;
 }
 
-#header-logo {
+#header-logo-image {
     width: 52px;
     height: 36px;
 }
