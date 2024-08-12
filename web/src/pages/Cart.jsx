@@ -17,11 +17,20 @@ function Cart() {
     }, {});
 
     const cartItems = Object.values(groupedCart);
+
+    let cartValue = 0;
+
+    cartItems.forEach(({price, quantity}) => cartValue += price*quantity)
+
+    const formattedCartValue = cartValue.toFixed(2);
     
     return(
         <div>
             <Logo url="/"/>
             <MyCart url="/cart"/>
+            <p>Produto</p>
+            <p>Quantidade</p>
+            <p>Preço</p>
             {cartItems.map(({ image, description, price, quantity }, index) => (
                 <div key={`product-id${index}`} style={{ backgroundColor: "white", padding: "10px", margin: "10px" }}>
                     <div>
@@ -35,13 +44,18 @@ function Cart() {
                         <p>{description}</p>
                     </div>
                     <div>
-                        <p>{price.toFixed(2)}</p>
+                        <p>{price.toFixed(3)}</p>
                     </div>
                     <div>
                         <p>Quantidade: {quantity}</p>
                     </div>
                 </div>
             ))}
+            <input type="button" value="Finalizar pedido" />
+            <div>
+                <p>Total:</p>
+                <h1>R$: {formattedCartValue}</h1>
+            </div>
         </div>
     );
 }
