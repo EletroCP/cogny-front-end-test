@@ -16,13 +16,18 @@ function Cart() {
         return acc;
     }, {});
 
+    const multipliesValies = (price, quantity) => {
+        const multiplie = price * quantity;
+        const format = multiplie.toFixed(2).replace(".", ",");
+        return format;
+    }
+
     const cartItems = Object.values(groupedCart);
 
     let cartValue = 0;
 
-    cartItems.forEach(({price, quantity}) => cartValue += price*quantity)
-
-    const formattedCartValue = cartValue.toFixed(2);
+    cartItems.forEach(({price, quantity}) => cartValue += price * quantity)
+    const formattedCartValue = cartValue.toFixed(2).replace(".", ",");
     
     return(
         <div>
@@ -44,10 +49,13 @@ function Cart() {
                         <p>{description}</p>
                     </div>
                     <div>
-                        <p>{price.toFixed(3)}</p>
+                        <p>{price.toFixed(2).replace(".",",")}</p>
                     </div>
                     <div>
                         <p>Quantidade: {quantity}</p>
+                    </div>
+                    <div>
+                        <h3>R${multipliesValies(price, quantity)}</h3>
                     </div>
                 </div>
             ))}
