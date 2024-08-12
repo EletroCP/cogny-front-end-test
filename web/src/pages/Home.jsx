@@ -7,37 +7,26 @@ import MyCart from '../components/MyCart';
 import '../style/Home.css';
 
 const Home = () => {
-    const { productsDb, cart, setCart } = useContext(GlobalStateContext);
-
-    const addProduct = (image, description, price) => {
-        const productObjet = {
-            image,
-            description,
-            price
-        }
-        const updateCart = [...cart, productObjet];
-        setCart(updateCart);
-    };
+    const { productsDb } = useContext(GlobalStateContext);
 
     return(
-        <div>
+        <div id='teste'>
             <div id='home-header'>
                 <Logo url={'/'}/>
                 <MyCart url={'/cart'}/>
             </div>
-            {productsDb.map(({image, description, price}, index) => (
-                <div key={`product-id${index}`}>
-                    <ProductCard 
-                        key={`product-id${index}`}
-                        image={image} 
-                        description={description} 
-                        price={price}
-                    />
-                    <div>
-                        <input type='button' value='Comprar' onClick={() => addProduct(image, description, price)}/>
+            <div id='home-cards-container'>
+                {productsDb.map(({image, description, price}, index) => (
+                    <div key={`product-id${index}`}>
+                        <ProductCard 
+                            key={`product-id${index}`}
+                            image={image} 
+                            description={description} 
+                            price={price}
+                        />
                     </div>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
     );
 };
