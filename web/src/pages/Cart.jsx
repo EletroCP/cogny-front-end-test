@@ -3,12 +3,12 @@ import { useContext } from 'react';
 import { GlobalStateContext } from '../context/context';
 import Logo from '../components/Logo';
 import MyCart from '../components/MyCart';
-import '../style/Cart.css'
+import '../style/Cart.css';
 import EmptyCart from '../components/EmptyCart';
 import SpamBuy from '../components/SpamBuy';
 
 function Cart() {
-    const { cart, finishPurchase, setFinishPurchase } = useContext(GlobalStateContext);
+    const { cart, setCart, finishPurchase, setFinishPurchase } = useContext(GlobalStateContext);
     const [hasItems, setHasItems] = useState(false);
 
     useEffect(() => {
@@ -31,7 +31,26 @@ function Cart() {
         const multiplie = price * quantity;
         const format = multiplie.toFixed(2).replace('.', ',');
         return format;
-    }
+    };
+
+    const addOne = (item) => {
+        const updatedCart = [...cart, item];
+        setCart(updatedCart);
+    };
+
+    const removeOne = (item) => {
+        const itemIndex = cart.findIndex(cartItem => 
+            cartItem.image === item.image &&
+            cartItem.description === item.description &&
+            cartItem.price === item.price
+        );
+
+        if (itemIndex !== -1) {
+            const updatedCart = [...cart];
+            updatedCart.splice(itemIndex, 1);
+            setCart(updatedCart);
+        }
+    };
 
     const cartItems = Object.values(groupedCart);
 
@@ -39,7 +58,7 @@ function Cart() {
 
     cartItems.forEach(({price, quantity}) => cartValue += price * quantity);
     const formattedCartValue = cartValue.toFixed(2).replace('.', ',');
-    
+
     return(
         <div id='cart-main-container'>
             { finishPurchase && <SpamBuy />}
@@ -56,33 +75,43 @@ function Cart() {
                     <p className='label-text'>Preço</p>
                 </div>
             </div>
-            {cartItems.map(({ image, description, price, quantity }, index) => (
+            {cartItems.map((item, index) => (
                 <div id='cart-cards-container' key={`product-id${index}`}>
-                        <img
-                            id='image-product-cart'
-                            src={image}
-                            alt={description}
+                    <img
+                        id='image-product-cart'
+                        src={item.image}
+                        alt={item.description}
+                    />
+                    <div id='cart-card-desciption-price'>
+                        <p id='cart-card-description'>
+                            {item.description}
+                        </p>  
+                        <p id='cart-card-price'>
+                            {`R$${item.price.toFixed(2).replace('.',',')}`}
+                        </p>   
+                    </div>
+                    <div id='label-qty-card'>
+                        <input 
+                            type="button" 
+                            value="+" 
+                            id="add-product" 
+                            className='button-card-qty' 
+                            onClick={() => addOne(item)} 
                         />
-                        <div id='cart-card-desciption-price'>
-                            <p id='cart-card-description'>
-                                {description}
-                            </p>  
-
-                            <p id='cart-card-price'>
-                                {`R$${price.toFixed(2).replace('.',',')}`}
-                            </p>   
-                        </div>
-
-                        <div id='label-qty-card'>
-                            <input type="button" value="+" id="add-product" className='button-card-qty' />
-                            <p id='cart-card-qty'>
-                                {quantity}
-                            </p>
-                            <input type="button" value="-" id="remove-product" className='button-card-qty' />
-                        </div>
-                        <div id='cart-card-price'>
-                            R${multipliesValies(price, quantity)}
-                        </div>   
+                        <p id='cart-card-qty'>
+                            {item.quantity}
+                        </p>
+                        <input 
+                            type="button" 
+                            value="-" 
+                            id="remove-product" 
+                            className='button-card-qty' 
+                            onClick={() => removeOne(item)} 
+                        />
+                    </div>
+                    <div id='cart-card-price'>
+                        R${multipliesValies(item.price, item.quantity)}
+                    </div>   
                 </div>
             ))}
             {
