@@ -10,7 +10,7 @@ const Home = () => {
     const { productsDb } = useContext(GlobalStateContext);
 
     return(
-        <div id='teste'>
+        <div>
             <div id='home-header'>
                 <Logo url={'/'}/>
                 <MyCart url={'/cart'}/>
