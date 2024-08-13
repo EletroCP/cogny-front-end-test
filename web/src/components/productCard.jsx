@@ -28,15 +28,18 @@ function ProductCard({image, description, price, index}) {
                     {description}
                 </p>
                 <p id='price-card'>
-                    {price.toFixed(2)}
+                    {`R$${price.toFixed(2).replace('.',',')}`}
                 </p>
                 
-                <input 
-                    type='button' 
-                    value='Adicionar ao carrinho' 
-                    onClick={() => addProduct(image, description, price)} 
-                    id='buy-button-card'
-                />
+                <div id='button-container-card'>
+                    <p id='qty-value-iten'>1</p>
+                    <input 
+                        type='button' 
+                        value='Adicionar ao carrinho' 
+                        onClick={() => addProduct(image, description, price)} 
+                        id='buy-button-card'
+                    />
+                </div>
         </div>
     )
 }

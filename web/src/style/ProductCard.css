@@ -6,7 +6,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
     align-items: center;
     text-align: center;
 }
@@ -15,32 +14,57 @@
     width: 260px;
     height: 260px;
     background-color: white;
+    margin-top: 15px;
 }
 
 #descripition-card{
     color: #333333;
     width: 242px;
-    height: 42px;
-    font-weight: 16px;
+    font-weight: bold;
+    font-size: 16px;
     background-color: #ffffff;
+    text-align: left;
 }
 
 #price-card{
     color: #000000;
-    width: 91px;
-    height: 25px;
-    font: weight 300;
+    width: 242px;
+    font-size: x-large;
+    font-weight: bold;
+    text-align: left;
     background-color: #ffffff;
+}
+
+#button-container-card {
+    background-color: #F8375D;
+    width: 260px;
+    height: 42px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
 }
 
 #buy-button-card{
     color: #ffffff;
-    width: 260px;
-    height: 42px;
+    width: 95%;
+    height: auto;
     font-size: larger;
     font-weight: bold;
     background-color: #F8375D;
     border-radius: 5px;
+}
+
+#qty-value-iten {
+    color: #ffffff;
+    width: 20%;
+    height: 100%;
+    font-size: larger;
+    font-weight: bold;
+    background-color: #7159C1;
+    border-radius: 5px 0 0 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #buy-button-card:hover {
