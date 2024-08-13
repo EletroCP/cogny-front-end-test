@@ -6,7 +6,9 @@ const GlobalStateContext = createContext();
 
 const GlobalStateProvider = ({ children }) => {
   const [productsDb, setProductsDb] = useState([]);
-  const [cart, setCart] = useState([])
+  const [cart, setCart] = useState([]);
+  const [finishPurchase, setFinishPurchase] = useState(false);
+
 
   const productsCollectionRef = collection(db, 'products');
   
@@ -20,7 +22,7 @@ const GlobalStateProvider = ({ children }) => {
   }, []);
   
   return (
-    <GlobalStateContext.Provider value={{ productsDb, cart, setCart }}>
+    <GlobalStateContext.Provider value={{ productsDb, cart, setCart, finishPurchase, setFinishPurchase }}>
       {children}
     </GlobalStateContext.Provider>
   );
