@@ -1,29 +1,45 @@
-import React from "react";
+import React from 'react';
+import '../style/ProductCard.css'
+import { useContext } from 'react';
+import { GlobalStateContext } from '../context/context';
 
 function ProductCard({image, description, price, index}) {
-    const temporaryImageSize = { width: "300px", height: "300px"};
     
+    const { cart, setCart } = useContext(GlobalStateContext);
+
+    const addProduct = (image, description, price) => {
+        const productObjet = {
+            image,
+            description,
+            price
+        }
+        const updateCart = [...cart, productObjet];
+        setCart(updateCart);
+    };
+
     return(
-        <div style={{backgroundColor: "withe"}}>
-                    <div key={`product-id${index}`}>
-                        <div >
-                            <img
-                                src={image}
-                                alt={description}
-                                style={temporaryImageSize}
-                            />
-                        </div>
-                        <div>
-                            <p>
-                                {description}
-                            </p>
-                        </div>
-                        <div>
-                            <p>
-                                {price.toFixed(2)}
-                            </p>
-                        </div>
-                    </div>
+        <div key={`product-id ${index}`} id='main-card-container'>
+                <img
+                    src={image}
+                    alt={description}
+                    id='card-image' 
+                />
+                <p id='descripition-card'>
+                    {description}
+                </p>
+                <p id='price-card'>
+                    {`R$${price.toFixed(2).replace('.',',')}`}
+                </p>
+                
+                <div id='button-container-card'>
+                    <p id='qty-value-iten'>1</p>
+                    <input 
+                        type='button' 
+                        value='Adicionar ao carrinho' 
+                        onClick={() => addProduct(image, description, price)} 
+                        id='buy-button-card'
+                    />
+                </div>
         </div>
     )
 }

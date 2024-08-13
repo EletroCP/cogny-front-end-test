@@ -1,0 +1,15 @@
+#home-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 3% 4%;
+    box-sizing: border-box;
+}
+
+#home-cards-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    width: 100vw; 
+    flex-wrap: wrap;
+}

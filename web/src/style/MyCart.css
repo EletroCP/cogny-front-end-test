@@ -1,0 +1,22 @@
+#header-mycart-container {
+    color: #ffffff;
+    width: auto;
+    height: 36px;
+    text-align: end;
+    font-family: "Roboto", sans-serif;
+}
+
+#header-mycart-container:hover {
+    cursor: pointer;
+}
+
+#header-mycart-text {
+    font-weight: bold;
+    font-weight: 14px;
+    height: auto;
+    width: auto;
+}
+
+#header-mycart-itens {
+    font-weight: 12px;
+}

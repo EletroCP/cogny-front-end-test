@@ -1,0 +1,25 @@
+#header-logo-container {
+    width: auto;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    gap: 15px;
+}
+
+#header-logo-container:hover{
+    cursor: pointer;
+}
+
+#header-logo-title {
+    color: #ffffff;
+    width: auto;
+    height: auto;
+    font-family: "Roboto", sans-serif;
+    font-weight: bolder;
+    font-size: 32px;
+}
+
+#header-logo-image {
+    width: 52px;
+    height: 36px;
+}
