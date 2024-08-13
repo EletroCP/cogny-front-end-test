@@ -5,9 +5,10 @@ import Logo from '../components/Logo';
 import MyCart from '../components/MyCart';
 import '../style/Cart.css'
 import EmptyCart from '../components/EmptyCart';
+import SpamBuy from '../components/SpamBuy';
 
 function Cart() {
-    const { cart, setCart } = useContext(GlobalStateContext);
+    const { cart, setCart, finishPurchase, setFinishPurchase } = useContext(GlobalStateContext);
     const [hasItems, setHasItems] = useState(false);
 
     useEffect(() => {
@@ -41,6 +42,7 @@ function Cart() {
     
     return(
         <div id='cart-main-container'>
+            { finishPurchase && <SpamBuy />}
             <div id='cart-header'>
                 <Logo url={'/'}/>
                 <MyCart url={'/cart'}/>
@@ -90,7 +92,7 @@ function Cart() {
                     id='finish-button-card'
                     type='button'
                     value='Finalizar pedido'
-                    onClick={() => {setCart([])}}
+                    onClick={() => {setFinishPurchase(true)}}
                 />
                 <div id='final-price-cart-label'>
                     <p id='total-cart-text'>Total:</p>
