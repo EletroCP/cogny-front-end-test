@@ -8,7 +8,7 @@ import EmptyCart from '../components/EmptyCart';
 import SpamBuy from '../components/SpamBuy';
 
 function Cart() {
-    const { cart, setCart, finishPurchase, setFinishPurchase } = useContext(GlobalStateContext);
+    const { cart, finishPurchase, setFinishPurchase } = useContext(GlobalStateContext);
     const [hasItems, setHasItems] = useState(false);
 
     useEffect(() => {
