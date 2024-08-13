@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { GlobalStateContext } from '../context/context';
 import Logo from '../components/Logo';
 import MyCart from '../components/MyCart';
 import '../style/Cart.css'
+import EmptyCart from '../components/EmptyCart';
 
 function Cart() {
     const { cart, setCart } = useContext(GlobalStateContext);
+    const [hasItems, setHasItems] = useState(false);
+
+    useEffect(() => {
+      const updateHasItems = () => {
+        setHasItems(cart.length > 0);
+      };
+      updateHasItems();
+    }, [cart]);
 
     const groupedCart = cart.reduce((acc, item) => {
         const key = `${item.image}-${item.description}-${item.price}`;
@@ -31,8 +40,10 @@ function Cart() {
     const formattedCartValue = cartValue.toFixed(2).replace('.', ',');
     
     return(
-        <div id='cart-main-container'>
-            <div id='cart-header'>
+        <div>
+            {hasItems ? 
+            <div id='cart-main-container'>
+                <div id='cart-header'>
                 <Logo url={'/'}/>
                 <MyCart url={'/cart'}/>
             </div>
@@ -86,6 +97,10 @@ function Cart() {
                     <h1 id='final-price-text'>R$: {formattedCartValue}</h1>
                 </div>
             </div>
+            </div> : 
+            <EmptyCart />
+            }
+            
         </div>
     );
 }
