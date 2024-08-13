@@ -40,10 +40,8 @@ function Cart() {
     const formattedCartValue = cartValue.toFixed(2).replace('.', ',');
     
     return(
-        <div>
-            {hasItems ? 
-            <div id='cart-main-container'>
-                <div id='cart-header'>
+        <div id='cart-main-container'>
+            <div id='cart-header'>
                 <Logo url={'/'}/>
                 <MyCart url={'/cart'}/>
             </div>
@@ -85,6 +83,8 @@ function Cart() {
                         </div>   
                 </div>
             ))}
+            {
+                hasItems ?
             <div id='finish-cart-label'>
                 <input
                     id='finish-button-card'
@@ -96,12 +96,9 @@ function Cart() {
                     <p id='total-cart-text'>Total:</p>
                     <h1 id='final-price-text'>R$: {formattedCartValue}</h1>
                 </div>
-            </div>
-            </div> : 
-            <EmptyCart />
+            </div> : <EmptyCart />
             }
-            
-        </div>
+        </div> 
     );
 }
 
